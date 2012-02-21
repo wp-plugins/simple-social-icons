@@ -185,12 +185,12 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 			</select>
 		</p>
 		
-		<hr />
+		<hr style="background: #ccc; border: 0; height: 1px; margin: 20px 0;" />
 		
 		<?php
 		foreach ( (array) $this->profiles as $profile => $data ) {
 			
-			printf( '<p><label for="%s"> <strong>%s</strong>:</label>', esc_attr( $this->get_field_id( $profile ) ), esc_attr( $data['label'] ) );
+			printf( '<p><label for="%s">%s:</label>', esc_attr( $this->get_field_id( $profile ) ), esc_attr( $data['label'] ) );
 			printf( '<input type="text" id="%s" class="widefat" name="%s" value="%s" /></p>', esc_attr( $this->get_field_id( $profile ) ), esc_attr( $this->get_field_name( $profile ) ), esc_url( $instance[$profile] ) );
 			
 		}
@@ -281,10 +281,11 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 		);
 		
 		/** The CSS to output */
-		$css = '.simple-social-icons ul li {
-			background: none;
-			border: none;
-			float: left;
+		$css = '.simple-social-icons .alignleft, .simple-social-icons .alignright {
+			margin: 0; padding: 0;
+		}
+		.simple-social-icons ul li {
+			background: none; border: none; float: left;
 		}
 		.simple-social-icons ul li a,
 		.simple-social-icons ul li a:hover {
