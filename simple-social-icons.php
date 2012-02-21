@@ -48,8 +48,8 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 		$this->defaults = array(
 			'title'                  => '',
 			'new_window'             => 0,
-			'size'                   => 24,
-			'border_radius'          => 2,
+			'size'                   => 32,
+			'border_radius'          => 6,
 			'background_color'       => '#999999',
 			'background_color_hover' => '#666666',
 			'alignment'              => 'alignleft',
