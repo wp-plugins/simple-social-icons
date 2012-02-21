@@ -46,29 +46,19 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 		 * Default widget option values.
 		 */
 		$this->defaults = array(
-			'title'                 => '',
-			'new_window'            => 0,
-			'size'                  => 24,
-			'border_radius'         => 2,
-			'alignment'             => 'alignleft',
-			'facebook'              => '',
-			'facebook_color'        => '#999999',
-			'facebook_color_hover'  => '#666666',
-			'gplus'                 => '',
-			'gplus_color'           => '#999999',
-			'gplus_color_hover'     => '#666666',
-			'linkedin'              => '',
-			'linkedin_color'        => '#999999',
-			'linkedin_color_hover'  => '#666666',
-			'pinterest'             => '',
-			'pinterest_color'       => '#999999',
-			'pinterest_color_hover' => '#666666',
-			'rss'                   => '',
-			'rss_color'             => '#999999',
-			'rss_color_hover'       => '#666666',
-			'twitter'               => '',
-			'twitter_color'         => '#999999',
-			'twitter_color_hover'   => '#666666',
+			'title'                  => '',
+			'new_window'             => 0,
+			'size'                   => 24,
+			'border_radius'          => 2,
+			'background_color'       => '#999999',
+			'background_color_hover' => '#666666',
+			'alignment'              => 'alignleft',
+			'facebook'               => '',
+			'gplus'                  => '',
+			'linkedin'               => '',
+			'pinterest'              => '',
+			'rss'                    => '',
+			'twitter'                => '',
 		);
 		
 		/**
@@ -183,6 +173,10 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 		
 		<p><label for="<?php echo $this->get_field_id( 'border_radius' ); ?>"><?php _e( 'Icon Border Radius:', 'ssiw' ); ?></label> <input id="<?php echo $this->get_field_id( 'border_radius' ); ?>" name="<?php echo $this->get_field_name( 'border_radius' ); ?>" type="text" value="<?php echo esc_attr( $instance['border_radius'] ); ?>" size="3" />px</p>
 		
+		<p><label for="<?php echo $this->get_field_id( 'background_color' ); ?>"><?php _e( 'Icon Color:', 'ssiw' ); ?></label> <input id="<?php echo $this->get_field_id( 'background_color' ); ?>" name="<?php echo $this->get_field_name( 'background_color' ); ?>" type="text" value="<?php echo esc_attr( $instance['background_color'] ); ?>" size="8" /></p>
+		
+		<p><label for="<?php echo $this->get_field_id( 'background_color_hover' ); ?>"><?php _e( 'Hover Color:', 'ssiw' ); ?></label> <input id="<?php echo $this->get_field_id( 'background_color_hover' ); ?>" name="<?php echo $this->get_field_name( 'background_color_hover' ); ?>" type="text" value="<?php echo esc_attr( $instance['background_color_hover'] ); ?>" size="8" /></p>
+		
 		<p>
 			<label for="<?php echo $this->get_field_id( 'alignment' ); ?>"><?php _e( 'Alignment', 'ssiw' ); ?>:</label>
 			<select id="<?php echo $this->get_field_id( 'alignment' ); ?>" name="<?php echo $this->get_field_name( 'alignment' ); ?>">
@@ -196,18 +190,8 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 		<?php
 		foreach ( (array) $this->profiles as $profile => $data ) {
 			
-			printf( '<label for="%s"> <strong>%s</strong>:</label>', esc_attr( $this->get_field_id( $profile ) ), esc_attr( $data['label'] ) );
-			printf( '<input type="text" id="%s" class="widefat" name="%s" value="%s" />', esc_attr( $this->get_field_id( $profile ) ), esc_attr( $this->get_field_name( $profile ) ), esc_url( $instance[$profile] ) );
-			
-			echo '<div class="alignleft">';
-			printf( '<p><label for="%s"> %s:</label><br />', esc_attr( $this->get_field_id( $profile . '_color' ) ), __( 'Icon Color', 'ssiw' ) );
-			printf( '<input type="text" id="%s" name="%s" value="%s" size="8" /></p>', esc_attr( $this->get_field_id( $profile . '_color' ) ), esc_attr( $this->get_field_name( $profile . '_color' ) ), esc_url( $instance[$profile . '_color'] ) );
-			echo '</div>';
-			
-			echo '<div class="alignright">';
-			printf( '<p><label for="%s"> %s:</label><br />', esc_attr( $this->get_field_id( $profile . '_color_hover' ) ), __( 'Hover Color', 'ssiw' ) );
-			printf( '<input type="text" id="%s" name="%s" value="%s" size="8" /></p>', esc_attr( $this->get_field_id( $profile . '_color_hover' ) ), esc_attr( $this->get_field_name( $profile . '_color_hover' ) ), esc_url( $instance[$profile . '_color_hover'] ) );
-			echo '</div><br style="clear: both;" />';
+			printf( '<p><label for="%s"> <strong>%s</strong>:</label>', esc_attr( $this->get_field_id( $profile ) ), esc_attr( $data['label'] ) );
+			printf( '<input type="text" id="%s" class="widefat" name="%s" value="%s" /></p>', esc_attr( $this->get_field_id( $profile ) ), esc_attr( $this->get_field_name( $profile ) ), esc_url( $instance[$profile] ) );
 			
 		}
 		
@@ -285,7 +269,7 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 	 */
 	function css() {
 		
-		/** Pull widget settings */
+		/** Pull widget settings, merge with defaults */
 		$all_instances = $this->get_settings();
 		$instance = wp_parse_args( $all_instances[$this->number], $this->defaults );
 		
@@ -304,7 +288,7 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 		}
 		.simple-social-icons ul li a,
 		.simple-social-icons ul li a:hover {
-			background: transparent url(' . $imgs[$instance['size']] . ') no-repeat;
+			background: ' . $instance['background_color'] . ' url(' . $imgs[$instance['size']] . ') no-repeat;
 			-moz-border-radius: ' . $instance['border_radius'] . 'px
 			-webkit-border-radius: ' . $instance['border_radius'] . 'px;
 			border-radius: ' . $instance['border_radius'] . 'px;
@@ -315,6 +299,10 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 			padding: 0;
 			text-indent: -999px;
 			width: ' . $instance['size'] . 'px;
+		}
+		
+		.simple-social-icons ul li a:hover {
+			background-color: ' . $instance['background_color_hover'] . ';
 		}';
 		
 		/** Individual Profile button styles */
@@ -325,12 +313,7 @@ class Simple_Social_Icons_Widget extends WP_Widget {
 			
 			$css .= '.simple-social-icons ul li.social-' . $profile . ' a,
 			.simple-social-icons ul li.social-' . $profile . ' a:hover {
-				background-color: ' . $instance[$profile . '_color'] . ';
 				background-position: ' . $data['background_positions'][$instance['size']] . ';
-			}
-
-			.simple-social-icons ul li.social-' . $profile . ' a:hover {
-				background-color: ' . $instance[$profile . '_color_hover'] . ';
 			}';
 
 		}
