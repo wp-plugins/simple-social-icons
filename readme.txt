@@ -24,7 +24,7 @@ Simple Social Icons is an easy to use, customizable way to display icons that li
 
 No, not at this time.
 
-= Which services are included?
+= Which services are included? =
 
 * Dribble
 * Email
