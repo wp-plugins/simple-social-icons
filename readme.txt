@@ -1,15 +1,15 @@
 === Plugin Name ===
 Contributors: nathanrice, studiopress
 Tags: social media, social networking, social profiles
-Requires at least: 3.3
+Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 0.9.5
+Stable tag: 1.0.1
 
-This plugin/widget allows you to insert social icons in any widget area.
+This plugin allows you to insert social icons in any widget area.
 
 == Description ==
 
-Simple Social Icons is an easy to use, customizable way to display icons that link visitors to your various social profiles. With it, you can easily choose which profiles to link to, customize the color and size of your icons, as well as align them to the left or right, all from the widget form (no settings page necessary!).
+Simple Social Icons is an easy to use, customizable way to display icons that link visitors to your various social profiles. With it, you can easily choose which profiles to link to, customize the color and size of your icons, as well as align them to the left, center, or right, all from the widget form (no settings page necessary!).
 
 == Installation ==
 
@@ -23,6 +23,23 @@ Simple Social Icons is an easy to use, customizable way to display icons that li
 = Can I reorder the icons? =
 
 No, not at this time.
+
+= Which services are included? =
+
+* Dribble
+* Email
+* Facebook
+* Flickr
+* Github
+* Google+
+* Instagram
+* LinkedIn
+* Pinterest
+* RSS
+* StumbleUpon
+* Twitter
+* Vimeo
+* YouTube
 
 == Changelog ==
 
@@ -45,3 +62,9 @@ No, not at this time.
 
 = 0.9.5 =
 * Added Instagram icon
+
+= 1.0.0 =
+* Switched to icon fonts, rather than images
+
+= 1.0.1 =
+* Made color and background color more specific in the CSS to avoid conflicts
