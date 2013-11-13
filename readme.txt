@@ -1,9 +1,9 @@
 === Plugin Name ===
-Contributors: nathanrice, studiopress
+Contributors: nathanrice, studiopress, bgardner
 Tags: social media, social networking, social profiles
-Requires at least: 3.6
-Tested up to: 3.6.1
-Stable tag: 1.0.4
+Requires at least: 3.7
+Tested up to: 3.7.1
+Stable tag: 1.0.5
 
 This plugin allows you to insert social icons in any widget area.
 
@@ -42,6 +42,8 @@ No, not at this time.
 * Vimeo
 * YouTube
 
+NOTE - The rights to each pictogram in the social extension are either trademarked or copyrighted by the respective company. Icons that are included in the social extension can be identified at http://www.entypo.com/.
+
 == Changelog ==
 
 = 0.9.0 =
@@ -78,3 +80,6 @@ No, not at this time.
 
 = 1.0.4 =
 * Updated version in enqueue script function
+
+= 1.0.5 =
+* Updated LICENSE.txt file to include social extension
